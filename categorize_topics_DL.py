@@ -32,7 +32,7 @@ philosophical_field = [
 dirs = list(os.walk('transcripts'))
 transcript_dirs = [dir for dir in dirs[0][2]]
 
-for transcript_dir in transcript_dirs:
+for transcript_dir in tqdm(transcript_dirs, 'Classifying transcripts'):
     categories = defaultdict(list)
     fields = defaultdict(list)
     with open(f'transcripts/{transcript_dir}', 'r') as f:
@@ -50,7 +50,13 @@ for transcript_dir in transcript_dirs:
         if score > 0.9:
             fields[label].append(word)
 
-    pass
+    # save it to classification/transcript_dir
+    with open(f'classification/{transcript_dir}_categories.txt', 'w') as f:
+        f.write(f'Categories: {categories}')
+    
+    with open(f'classification/{transcript_dir}_fields.txt', 'w') as f:
+        f.write(f'Fields: {fields}')
+        
 
         
 
