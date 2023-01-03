@@ -59,7 +59,7 @@ def classify_text(text, labels):
     hypothesis_template = "This text is about {}."
     scores = [0]*len(labels)
     hypotheses = [hypothesis_template.format(label) for label in labels]
-    for chunk in obtain_chunks(text):
+    for chunk in tqdm(obtain_chunks(text), desc='Classifying labels'):
         premise = ' '.join(chunk)
         for pos, hypothesis in enumerate(hypotheses):
             x = tokenizer.encode(premise, hypothesis, return_tensors='pt',
