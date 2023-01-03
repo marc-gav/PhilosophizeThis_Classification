@@ -32,7 +32,7 @@ philosophical_field = [
 dirs = list(os.walk('transcripts'))
 transcript_dirs = [dir for dir in dirs[0][2]]
 
-for transcript_dir in tqdm(transcript_dirs, 'Classifying transcripts'):
+for transcript_dir in transcript_dirs:
     categories = defaultdict(list)
     fields = defaultdict(list)
     with open(f'transcripts/{transcript_dir}', 'r') as f:
