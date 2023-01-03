@@ -27,12 +27,8 @@ def obtain_chunks(text, model_max_len=1024):
     # we want to chunk the text into sentences that are shorter than the max length of the model
     sentences = nltk.sent_tokenize(text)
     sentences_token_length = []
-    tokenized_sentences = []
     for sentence in sentences:
-        tokenized_sentences.append(tokenizer.encode(sentence))
-
-    for tokenized_sentence in tokenized_sentences:
-        sentences_token_length.append(len(tokenized_sentence))
+        sentence_token_length = len(tokenizer.encode(sentence))
     # now we have a list of the token length of each sentence
     # we want to chunk the text into sentences that are shorter than the max length of the model
     # we can do this by adding the token length of each sentence until we reach the max length
@@ -40,7 +36,7 @@ def obtain_chunks(text, model_max_len=1024):
     chunks = []
     current_chunk = []
     current_chunk_length = 0
-    for sentence, sentence_token_length in zip(tokenized_sentences, sentences_token_length):
+    for sentence, sentence_token_length in zip(sentences, sentences_token_length):
         if current_chunk_length + sentence_token_length > model_max_len:
             chunks.append(current_chunk)
             current_chunk = []
@@ -87,9 +83,6 @@ for transcript_dir in tqdm(transcript_dirs, desc=f'Classifying transcripts'):
     # tokenize text for the classifier
     
     field_classification = classify_text(text, philosophical_field)
-    print(transcript_dir)
-    pp(field_classification)
-    input()
     for label, score in zip(field_classification['labels'], field_classification['scores']):
         if score > 0.9:
             fields.append(label)
