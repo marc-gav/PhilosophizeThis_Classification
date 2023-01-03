@@ -83,7 +83,7 @@ def classify_text(text, labels):
 dirs = list(os.walk('transcripts'))
 transcript_dirs = [dir for dir in dirs[0][2]]
 
-for transcript_dir in transcript_dirs:
+for transcript_dir in tqdm(transcript_dirs, desc=f'Classifying transcripts'):
     categories = defaultdict(list)
     fields = []
     with open(f'transcripts/{transcript_dir}', 'r') as f:
