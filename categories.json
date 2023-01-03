@@ -1,0 +1,29 @@
+{
+    "philosophical_field":
+        [
+            "Aesthetics",
+            "Epistemology",
+            "Ethics",
+            "Logic",
+            "Metaphysics",
+            "Philosophy of mind",
+            "Philosophy of science",
+            "Meta-philosophy",
+            "Philosophy of education",
+            "Philosophy of history",
+            "Philosophy of language",
+            "Philosophy of law",
+            "Philosophy of mathematics",
+            "Philosophy of religion",
+            "Political philosophy",
+            "Environmental philosophy",
+            "Feminism"
+        ],
+    "categories":
+        [
+            "author",
+            "century",
+            "country"
+        ]
+}
+
