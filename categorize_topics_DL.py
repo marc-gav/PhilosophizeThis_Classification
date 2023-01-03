@@ -13,22 +13,14 @@ device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cp
 nli_model.to(device)
 
 philosophical_field = [
-    "Aesthetics",
+    "Axiology",
+    "Metaphysics",
     "Epistemology",
     "Ethics",
+    "Political Philosophy",
+    "Aesthetics",
     "Logic",
-    "Metaphysics",
-    "Philosophy of mind",
-    "Philosophy of science",
-    "Meta-philosophy",
-    "Philosophy of education",
-    "Philosophy of history",
-    "Philosophy of language",
-    "Philosophy of law",
-    "Philosophy of mathematics",
-    "Philosophy of religion",
-    "Political philosophy",
-    "Environmental philosophy",
+    "Religion",
     "Feminism"
 ]
 
