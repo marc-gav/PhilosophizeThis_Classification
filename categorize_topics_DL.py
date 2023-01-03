@@ -96,7 +96,7 @@ for transcript_dir in tqdm(transcript_dirs, desc=f'Classifying transcripts'):
     pp(field_classification)
     input()
     for label, score in zip(field_classification['labels'], field_classification['scores']):
-        if score > 0.9:
+        if score > 0.92:
             fields.append(label)
     
     with open(f'classification/{transcript_dir}_fields.txt', 'w') as f:
