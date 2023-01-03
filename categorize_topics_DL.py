@@ -41,7 +41,7 @@ for transcript_dir in transcript_dirs:
     
     # nltk sentence tokenizer
     sentences = nltk.sent_tokenize(text)
-    for sentence in tqdm(text, desc=f'Classifying sentences for {transcript_dir}'):
+    for sentence in tqdm(sentences, desc=f'Classifying sentences for {transcript_dir}'):
         category_classification = classifier(sentence, category_labels, multi_label=True)
         for label, score in zip(category_classification['labels'], category_classification['scores']):
             if score > 0.9:
