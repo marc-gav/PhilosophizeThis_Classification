@@ -92,13 +92,12 @@ for transcript_dir in tqdm(transcript_dirs, desc=f'Classifying transcripts'):
     # tokenize text for the classifier
     
     field_classification = classify_text(text, philosophical_field)
+    print(transcript_dir)
+    pp(field_classification)
+    input()
     for label, score in zip(field_classification['labels'], field_classification['scores']):
         if score > 0.9:
             fields.append(label)
-
-    # save it to classification/transcript_dir
-    with open(f'classification/{transcript_dir}_categories.txt', 'w') as f:
-        f.write(f'Categories: {categories}')
     
     with open(f'classification/{transcript_dir}_fields.txt', 'w') as f:
         f.write(f'Fields: {fields}')
