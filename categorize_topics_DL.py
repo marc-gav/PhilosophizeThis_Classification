@@ -13,7 +13,7 @@ device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cp
 nli_model.to(device)
 
 philosophical_field = [
-    "Axiology",
+    "Aesthetics",
     "Metaphysics",
     "Epistemology",
     "Ethics",
@@ -88,7 +88,7 @@ for transcript_dir in tqdm(transcript_dirs, desc=f'Classifying transcripts'):
     pp(field_classification)
     input()
     for label, score in zip(field_classification['labels'], field_classification['scores']):
-        if score > 0.92:
+        if score > 0.9:
             fields.append(label)
     
     with open(f'classification/{transcript_dir}_fields.txt', 'w') as f:
