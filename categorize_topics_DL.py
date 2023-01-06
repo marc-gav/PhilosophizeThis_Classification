@@ -23,6 +23,9 @@ philosophical_field = [
     "Feminism"
 ]
 
+# lowercase them
+philosophical_field = [field.lower() for field in philosophical_field]
+
 def obtain_chunks(text, model_max_len=1024):
     # we want to chunk the text into sentences that are shorter than the max length of the model
     sentences = nltk.sent_tokenize(text)
@@ -47,7 +50,7 @@ def obtain_chunks(text, model_max_len=1024):
     return chunks
 
 def classify_text(text, labels):
-    hypothesis_template = "This text is about {}."
+    hypothesis_template = "This philosophical text is about the field of {}."
     scores = [0]*len(labels)
     hypotheses = [hypothesis_template.format(label) for label in labels]
     for chunk in tqdm(obtain_chunks(text), desc='Classifying labels'):
