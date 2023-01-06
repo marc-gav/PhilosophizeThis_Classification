@@ -28,7 +28,7 @@ def obtain_chunks(text, model_max_len=1024):
     sentences = nltk.sent_tokenize(text)
     sentences_token_length = []
     for sentence in sentences:
-        sentence_token_length = len(tokenizer.encode(sentence))
+        sentences_token_length.append(len(tokenizer.encode(sentence)))
     # now we have a list of the token length of each sentence
     # we want to chunk the text into sentences that are shorter than the max length of the model
     # we can do this by adding the token length of each sentence until we reach the max length
